@@ -90,8 +90,8 @@ if __name__ == '__main__':
     parser.add_argument("--only-month", help="Вывести только указанный месяц", action='store_true')
     args = parser.parse_args()
 
-    target_date = dateparser.parse(args.target, settings={'TIMEZONE': 'UTC'})
-    known_date = dateparser.parse(args.knowndate, settings={'TIMEZONE': 'UTC'})
+    target_date = dateparser.parse(args.target, settings={'TIMEZONE': 'UTC', 'DATE_ORDER': 'DMY'})
+    known_date = dateparser.parse(args.knowndate, settings={'TIMEZONE': 'UTC', 'DATE_ORDER': 'DMY'})
 
     if args.only_month:
         dates = compute_shifts(target_date, known_date, args.delta)
